@@ -25,6 +25,7 @@ class User(Base):
 
 Base.metadata.create_all(engine)
 
+# multiple insertions
 session.add_all([
     User(name='Bojan1', fullname='BojanF1', nickname='bojan1'),
     User(name='Bojan2', fullname='BojanF2', nickname='bojan2'),
@@ -33,7 +34,7 @@ session.add_all([
     User(name='Bojan5', fullname='BojanF5', nickname='bojan5')]
     )
 
-
-our_user = session.query(User).filter_by(name='Bojan3').first() 
-print(our_user)
+# multiple querying
+for instance in session.query(User).order_by(User.id):
+    print(instance)
 
